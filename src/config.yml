@@ -1,0 +1,12 @@
+# # # # # # # # # # # # # # # # #
+# # # # # # # # # # # # # # # # #
+# Airtheon's Essentials plugin  #
+# # # # # # # # # # # # # # # # #
+# # # # # # # # # # # # # # # # #
+
+# If the /spawn command doesn't send you to the right main world.
+# uncomment this command and replace "world" with the name of the world you want to use as the main world.
+# main-world: 'world'
+
+# If you don't want to use a main world and just teleport to the dimension's spawn instead, set this to true.
+use-main: true

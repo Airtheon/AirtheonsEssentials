@@ -1,0 +1,13 @@
+name: Airtheons_Essentials
+version: 1.0.0
+api-version: 1.16
+author: Airtheon
+description: The essential commands and features I like to use on a vanilla Spigot server.
+main: me.airtheon.airtheonsessentials.AirtheonsEssentials
+commands:
+  spawn:
+    description: Teleports you to spawn.
+    permission: ase.spawn
+  hello:
+    description: Get a nice hello message.
+    permission: ase.hello
