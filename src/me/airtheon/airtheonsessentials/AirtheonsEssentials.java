@@ -1,12 +1,15 @@
 package me.airtheon.airtheonsessentials;
 
 import me.airtheon.airtheonsessentials.commands.*;
-import org.bukkit.World;
+import me.airtheon.airtheonsessentials.listeners.*;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
+import org.bukkit.event.HandlerList;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class AirtheonsEssentials extends JavaPlugin{
+
+    // reloads can happen with players already joined and doing things!
 
     @Override
     public void onEnable() {
@@ -19,6 +22,15 @@ public class AirtheonsEssentials extends JavaPlugin{
 
         this.saveDefaultConfig();
         this.reloadConfig();
+
+        // Select which sleep checker to use, if any, based on config.
+        if (this.getConfig().getBoolean("use-sleep-checker") &&
+                this.getConfig().getBoolean("use-percentile-sleep")){
+            this.getServer().getPluginManager().registerEvents(new PercentileSleepListener(this), this);
+        } else if (this.getConfig().getBoolean("use-sleep-checker")){
+            this.getServer().getPluginManager().registerEvents(new SimpleSleepListener(), this);
+        }
+
     }
 
     @Override
@@ -26,6 +38,8 @@ public class AirtheonsEssentials extends JavaPlugin{
         // shutdown
         // reloads
         // plugin reloads
+        // Unregister the listeners on disabling the plugin, just in case.
+        HandlerList.unregisterAll(this);
     }
 
     @Override
