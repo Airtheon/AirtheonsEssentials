@@ -23,12 +23,9 @@ public class AirtheonsEssentials extends JavaPlugin{
         this.saveDefaultConfig();
         this.reloadConfig();
 
-        // Select which sleep checker to use, if any, based on config.
-        if (this.getConfig().getBoolean("use-sleep-checker") &&
-                this.getConfig().getBoolean("use-percentile-sleep")){
-            this.getServer().getPluginManager().registerEvents(new PercentileSleepListener(this), this);
-        } else if (this.getConfig().getBoolean("use-sleep-checker")){
-            this.getServer().getPluginManager().registerEvents(new SimpleSleepListener(), this);
+        // Only add the sleep listener if it is going to be used.
+        if (this.getConfig().getBoolean("use-sleep-checker")){
+            this.getServer().getPluginManager().registerEvents(new SleepListener(this), this);
         }
 
     }

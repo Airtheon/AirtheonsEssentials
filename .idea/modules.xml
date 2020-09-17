@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/AirtheonsEssentials.iml" filepath="$PROJECT_DIR$/.idea/AirtheonsEssentials.iml" />
+      <module fileurl="file://$PROJECT_DIR$/AirtheonsEssentials.iml" filepath="$PROJECT_DIR$/AirtheonsEssentials.iml" />
     </modules>
   </component>
 </project>
