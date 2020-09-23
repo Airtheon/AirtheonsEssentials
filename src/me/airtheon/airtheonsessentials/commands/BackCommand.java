@@ -24,8 +24,12 @@ public class BackCommand implements ICommand {
             // player
             Player player = (Player) sender;
             if (player.hasPermission("ase.back")){
-                // Make sure to get the location before the teleport, and thus location update is initialized.
+                // Make sure to get the location before the teleport.
                 Location location  = this.backPersistence.get(player);
+                if(location == null){
+                    player.sendMessage(ChatColor.RED + "No location to teleport back to.");
+                    return false;
+                }
                 this.playerTeleport.teleport(player, location);
                 return true;
             }

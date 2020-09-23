@@ -1,5 +1,5 @@
 name: Airtheons_Essentials
-version: 1.0.0
+version: 1.1.1
 api-version: 1.16
 author: Airtheon
 description: The essential commands and features I like to use on a vanilla Spigot server.
@@ -8,6 +8,9 @@ commands:
   spawn:
     description: Teleports you to spawn.
     permission: ase.spawn
+  back:
+    description: Teleports you to the last location you teleported from.
+    permission: ase.back
   hello:
     description: Get a nice hello message.
     permission: ase.hello

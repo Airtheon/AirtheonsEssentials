@@ -18,11 +18,16 @@ public class LocationPersistence {
 
     public void set(Player player, Location location){
         PersistentDataContainer customPlayerTagContainer = player.getPersistentDataContainer();
-        customPlayerTagContainer.set(locationKey, locationTagType, player.getLocation());
+        customPlayerTagContainer.set(locationKey, locationTagType, location);
     }
 
     public Location get(Player player) {
         PersistentDataContainer customPlayerTagContainer = player.getPersistentDataContainer();
         return customPlayerTagContainer.get(locationKey, locationTagType);
+    }
+
+    public void remove(Player player){
+        PersistentDataContainer customPlayerTagContainer = player.getPersistentDataContainer();
+        customPlayerTagContainer.remove(locationKey);
     }
 }
