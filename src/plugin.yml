@@ -2,7 +2,7 @@ name: Airtheons_Essentials
 version: 1.1.2
 api-version: 1.16
 author: Airtheon
-description: The essential commands and features I like to use on a vanilla Spigot server.
+description: The essential commands and features I like to use on a Vanilla Spigot server. With easy config to turn them off if you don't lik them.
 main: me.airtheon.airtheonsessentials.AirtheonsEssentials
 commands:
   spawn:
