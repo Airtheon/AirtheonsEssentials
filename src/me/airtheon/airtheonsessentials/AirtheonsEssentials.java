@@ -7,6 +7,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.event.HandlerList;
 import org.bukkit.plugin.java.JavaPlugin;
 
+@SuppressWarnings("NullableProblems")
 public class AirtheonsEssentials extends JavaPlugin{
 
     // reloads can happen with players already joined and doing things!
@@ -35,6 +36,7 @@ public class AirtheonsEssentials extends JavaPlugin{
         // shutdown
         // reloads
         // plugin reloads
+
         // Unregister the listeners on disabling the plugin, just in case.
         HandlerList.unregisterAll(this);
     }
@@ -42,6 +44,7 @@ public class AirtheonsEssentials extends JavaPlugin{
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         // Create variable to be filled by the switch, NullCommand always returns False.
+        // TODO make sure that these classes are not unnecessarily created as new objects.
         ICommand cmd = new NullCommand();
         switch (label.toLowerCase()){
             case "hello":
@@ -49,6 +52,9 @@ public class AirtheonsEssentials extends JavaPlugin{
                 break;
             case "spawn":
                 cmd = new SpawnCommand(this);
+                break;
+            case "back":
+                cmd = new BackCommand(this);
                 break;
         }
         return cmd.run(sender, command, args);

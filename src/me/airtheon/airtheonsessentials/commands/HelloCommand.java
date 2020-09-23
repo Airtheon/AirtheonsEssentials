@@ -1,9 +1,13 @@
 package me.airtheon.airtheonsessentials.commands;
 
 import org.bukkit.ChatColor;
+import org.bukkit.NamespacedKey;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.persistence.PersistentDataContainer;
+
+import java.util.Arrays;
 
 public class HelloCommand implements ICommand {
     @Override
