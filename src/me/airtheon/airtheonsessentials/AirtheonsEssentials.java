@@ -24,6 +24,11 @@ public class AirtheonsEssentials extends JavaPlugin{
         this.saveDefaultConfig();
         this.reloadConfig();
 
+        // If enabled, add respawn listener to set /back location on point of death.
+        if (this.getConfig().getBoolean("back-on-death")) {
+            this.getServer().getPluginManager().registerEvents(new RespawnListener(this), this);
+        }
+
         // Only add the sleep listener if it is going to be used.
         if (this.getConfig().getBoolean("use-sleep-checker")){
             this.getServer().getPluginManager().registerEvents(new SleepListener(this), this);

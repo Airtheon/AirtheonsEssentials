@@ -23,17 +23,17 @@ public class SleepListener implements Listener {
     Float sleep_percentage;
     Messenger messenger;
 
-    public SleepListener(AirtheonsEssentials airtheonsEssentials) {
+    public SleepListener(AirtheonsEssentials ase) {
         // Initialize plugin
-        this.ase = airtheonsEssentials;
+        this.ase = ase;
         // Initialize hashtable with 0s for each world as there are no sleepers on a server restart.
-        this.sleepers = new Hashtable<String, List<Player>>();
-        List<World> worlds = ase.getServer().getWorlds();
+        this.sleepers = new Hashtable<>();
+        List<World> worlds = this.ase.getServer().getWorlds();
         for (World w : worlds) {
             this.sleepers.put(w.getName(), new ArrayList<>());
         }
         // Initialize sleep-percentage variable from the config file.
-        this.sleep_percentage = airtheonsEssentials.getConfig().getInt("sleep-percentile") / 100f;
+        this.sleep_percentage = this.ase.getConfig().getInt("sleep-percentile") / 100f;
         // Initialize messenger
         this.messenger = new Messenger();
     }
@@ -52,23 +52,20 @@ public class SleepListener implements Listener {
         sleepers.get(world.getName()).add(event.getPlayer());
 
         // Wait 5 seconds before proceeding to make sure the player sleeps.
-        Bukkit.getServer().getScheduler().runTaskLater(this.ase, new Runnable() {
-            @Override
-            public void run() {
-                if (ase.getConfig().getBoolean("use-percentile-sleep")){
-                    checkSleepers(world, event);
-                } else {
-                    // One person sleeps so it becomes day again.
-                    makeDay(world);
-                    // Reset the sleepers counter for this world.
-                    sleepers.put(world.getName(), new ArrayList<>());
-                }
+        Bukkit.getServer().getScheduler().runTaskLater(this.ase, () -> {
+            if (ase.getConfig().getBoolean("use-percentile-sleep")){
+                checkSleepers(world);
+            } else {
+                // One person sleeps so it becomes day again.
+                makeDay(world);
+                // Reset the sleepers counter for this world.
+                sleepers.put(world.getName(), new ArrayList<>());
             }
         }, 100L);
     }
 
     // Check if there are enough people asleep to make it day again.
-    private void checkSleepers(World world, PlayerBedEnterEvent event){
+    private void checkSleepers(World world){
         int sleepersNeeded = (int) Math.ceil(world.getPlayers().size() * this.sleep_percentage);
         /*event.getPlayer().sendMessage(ChatColor.BLUE + "Currently " +
                 ChatColor.GREEN + world.getPlayers().size() +

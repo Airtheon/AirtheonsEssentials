@@ -27,3 +27,10 @@ use-percentile-sleep: true
 sleep-percentile: 33
 
 #################################
+
+### Back command ################
+
+# Be able to use /back command to return to location of death after dying.
+back-on-death: true
+
+#################################
