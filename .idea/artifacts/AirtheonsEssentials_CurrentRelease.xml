@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="jar" name="AirtheonsEssentials:CurrentRelease">
-    <output-path>$PROJECT_DIR$/out/artifacts/AirtheonsEssentials_jar</output-path>
-    <root id="archive" name="AirtheonsEssentials_CurrentRelease.jar">
-      <element id="module-output" name="AirtheonsEssentials" />
-    </root>
-  </artifact>
-</component>
